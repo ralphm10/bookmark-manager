@@ -1,8 +1,16 @@
 require 'sinatra/base'
 
-class MusicManager < Sinatra::Base
+class BookmarkManager < Sinatra::Base
   get '/' do
-    'Hello World'
+    'Bookmark Manager'
+  end
+
+  get '/bookmarks' do
+    bookmarks = [
+      'https://www.mixcloud.com/',
+      'https://soundcloud.com/'
+    ]
+    bookmarks.join
   end
 
   run! if app_file == $0
