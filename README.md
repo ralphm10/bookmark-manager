@@ -1,4 +1,4 @@
-## Music Manager
+## Bookmark Manager
 
 A simple website to save my bookmarks.
 
