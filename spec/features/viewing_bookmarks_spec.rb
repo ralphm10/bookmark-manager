@@ -4,4 +4,4 @@ feature 'viewing bookmarks' do
     expect(page).to have_content 'https://www.mixcloud.com/'
     expect(page).to have_content 'https://soundcloud.com/'
   end
-end 
+end

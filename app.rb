@@ -6,11 +6,11 @@ class BookmarkManager < Sinatra::Base
   end
 
   get '/bookmarks' do
-    bookmarks = [
-      'https://www.mixcloud.com/',
-      'https://soundcloud.com/'
-    ]
-    bookmarks.join
+    @bookmarks = [
+            'https://www.mixcloud.com/',
+            'https://soundcloud.com/'
+          ]
+    erb :'bookmarks/index'
   end
 
   run! if app_file == $0
