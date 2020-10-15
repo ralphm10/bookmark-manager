@@ -22,6 +22,10 @@ So that I can quickly access my favourite websites
 I would like to see a list of bookmarks
 
 As a busy developer
+So that my bookmarks are up to date
+I would like to be able to add a new bookmark
+
+As a busy developer
 So that I can save a website
-I would like bookmarks the name and title
+I would like bookmarks to display the name and title
 ```
