@@ -7,7 +7,7 @@ class Bookmark
     else
       connection = PG.connect(dbname: 'bookmark_manager')
     end
-    result = connection.exec('SELECT * FROM bookmarks')
+    connection.exec('SELECT * FROM bookmarks')
     # result.map { |bookmark| bookmark['title'] }
   end
 
@@ -17,6 +17,6 @@ class Bookmark
     else
       connection = PG.connect(dbname: 'bookmark_manager')
     end
-    connection.exec("INSERT INTO bookmarks (url, title) VALUES('#{url}', '#{title}');")
+    connection.exec("INSERT INTO bookmarks (url, title) VALUES('#{url}', '#{title}') RETURNING id, url, title;")
   end
 end

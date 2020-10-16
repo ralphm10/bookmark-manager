@@ -5,6 +5,6 @@ feature 'creating bookmarks' do
     fill_in('url', with: 'http://github.com/')
     fill_in('title', with: 'GitHub')
     click_button('Submit')
-    expect(page).to have_content('http://github.com/')
+    expect(page).to have_link('GitHub', href:'http://github.com/')
   end
 end

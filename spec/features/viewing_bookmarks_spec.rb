@@ -5,7 +5,7 @@ feature 'viewing bookmarks' do
 
     visit '/bookmarks'
 
-    expect(page).to have_content 'https://www.goal.com/en-gb'
-    expect(page).to have_content 'https://www.nfl.com/uk/'
+    expect(page).to have_link('NFL UK', href: 'https://www.nfl.com/uk/')
+    expect(page).to have_link('Goal!', href: 'https://www.goal.com/en-gb')
   end
 end
