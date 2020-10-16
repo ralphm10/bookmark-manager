@@ -19,9 +19,13 @@ describe Bookmark do
 
   describe '.create' do
     it 'adds a new bookmark' do
-      bookmark = Bookmark.create(url: 'https://www.linkedin.com/', title: 'LinkedIn')
-      expect(bookmark.url).to eq('https://www.linkedin.com/')
-      expect(bookmark.title).to eq('LinkedIn')
+      test_bookmark = Bookmark.create(url: 'https://www.linkedin.com/', title: 'LinkedIn')
+      test_data = PG.connect(dbname: 'bookmark_manager_test').query("SELECT * FROM bookmarks WHERE id = #{test_bookmark.id};")
+
+      expect(test_bookmark).to be_a Bookmark
+      expect(test_bookmark.id).to eq test_data[0]['id']
+      expect(test_bookmark.url).to eq('https://www.linkedin.com/')
+      expect(test_bookmark.title).to eq('LinkedIn')
     end
   end
 end
