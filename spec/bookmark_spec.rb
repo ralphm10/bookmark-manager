@@ -13,4 +13,12 @@ describe Bookmark do
       expect(bookmarks).to include('https://www.goal.com/en-gb')
     end
   end
+
+  describe '.create' do
+    it 'adds a new bookmark do' do
+      Bookmark.create('https://www.linkedin.com/')
+      bookmarks = Bookmark.all
+      expect(bookmarks).to include('https://www.linkedin.com/')
+    end
+  end
 end
