@@ -1,9 +1,7 @@
 feature 'viewing bookmarks' do
   scenario 'bookmarks page shows all bookmarks' do
-
-    connection = PG.connect(dbname: 'bookmark_manager_test')
-    connection.exec("INSERT INTO bookmarks (url) VALUES('https://www.nfl.com/uk/');")
-    connection.exec("INSERT INTO bookmarks (url) VALUES('https://www.goal.com/en-gb');")
+    Bookmark.create(url: 'https://www.nfl.com/uk/')
+    Bookmark.create(url: 'https://www.goal.com/en-gb')
 
     visit '/bookmarks'
 
