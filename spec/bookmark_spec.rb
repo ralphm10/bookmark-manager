@@ -16,7 +16,7 @@ describe Bookmark do
 
   describe '.create' do
     it 'adds a new bookmark do' do
-      Bookmark.create(url: 'https://www.linkedin.com/')
+      Bookmark.create(url: 'https://www.linkedin.com/', title: 'LinkedIn')
       expect(Bookmark.all).to include('https://www.linkedin.com/')
     end
   end
