@@ -46,4 +46,12 @@ describe Bookmark do
       expect(updated_bookmark.title). to eq('NFL UK')
     end
   end
+
+  describe '.find' do
+    it 'selects a bookmark from the database' do
+      test_bookmark = Bookmark.create(url: 'https://www.nfl.com', title: 'NFL')
+      result = Bookmark.find(id: test_bookmark.id)
+      expect(result.title).to eq 'NFL'
+    end
+  end
 end

@@ -41,9 +41,19 @@ class Bookmark
     else
       connection = PG.connect(dbname: 'bookmark_manager')
     end
-    result = connection.exec("UPDATE bookmarks SET url='#{url}', title ='#{title}' WHERE id=#{id} RETURNING id, url, title;")
-    Bookmark.new(id: result[0]['id'], url: result[0]['url'], title: result[0]['title'], )
+    result = connection.exec("UPDATE bookmarks SET url='#{url}', title ='#{title}' WHERE id =#{id} RETURNING id, url, title;")
+    Bookmark.new(id: result[0]['id'], url: result[0]['url'], title: result[0]['title'])
   end
+
+  def self.find(id:)
+    if ENV['ENVIRONMENT'] == 'test'
+      connection = PG.connect(dbname: 'bookmark_manager_test')
+    else
+      connection = PG.connect(dbname: 'bookmark_manager')
+    end
+    result = connection.exec("SELECT * FROM bookmarks WHERE id = '#{id}';")
+    Bookmark.new(id: result[0]['id'], url: result[0]['url'], title: result[0]['title'])
+  end 
 
   attr_reader :id, :title, :url
 
