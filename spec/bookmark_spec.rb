@@ -37,4 +37,13 @@ describe Bookmark do
       expect(Bookmark.all.empty?).to eq true
     end
   end
+
+  describe '.update' do
+    it 'updates a bookmark' do
+      test_bookmark = Bookmark.create(url: 'https://www.nfl.com', title: 'NFL')
+      updated_bookmark = Bookmark.update(id: test_bookmark.id, url: 'https://www.nfl.com/uk', title: 'NFL UK')
+      expect(updated_bookmark.url). to eq('https://www.nfl.com/uk')
+      expect(updated_bookmark.title). to eq('NFL UK')
+    end
+  end
 end

@@ -31,5 +31,9 @@ I would like bookmarks to display the name and title
 
 As a busy developer
 If I no longer wish to visit a website
-I would like to be able to delete a  bookmark
+I would like to be able to delete a bookmark
+
+As a busy developer
+So that I know my bookmarks are up to date
+I would like to be able to amend the title or link of a bookmark
 ```
