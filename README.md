@@ -28,4 +28,8 @@ I would like to be able to add a new bookmark
 As a busy developer
 So that I can save a website
 I would like bookmarks to display the name and title
+
+As a busy developer
+If I no longer wish to visit a website
+I would like to be able to delete a  bookmark
 ```
