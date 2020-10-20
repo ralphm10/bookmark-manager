@@ -28,6 +28,10 @@ describe Bookmark do
       expect(test_bookmark.url).to eq('https://www.linkedin.com/')
       expect(test_bookmark.title).to eq('LinkedIn')
     end
+    it 'does not add an invalid url' do
+      Bookmark.create(url: 'some url', title: 'some title')
+      expect(Bookmark.all).to be_empty
+    end 
   end
 
   describe '.delete' do
