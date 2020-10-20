@@ -2,8 +2,6 @@ require 'pg'
 
 class Bookmark
 
-  
-
   def self.all
     if ENV['ENVIRONMENT'] == 'test'
       connection = PG.connect(dbname: 'bookmark_manager_test')
