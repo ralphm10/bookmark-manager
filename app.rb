@@ -1,12 +1,15 @@
 require 'sinatra/base'
 require './lib/bookmark'
 require './database_connection_setup'
+require 'sinatra/flash'
+
 
 class BookmarkManager < Sinatra::Base
+  register Sinatra::Flash
   enable :sessions, :method_override
 
   get '/' do
-    'Bookmark Manager'
+    flash[:notice] = 'Welcome to your new bookmark manager!'
   end
 
   get '/bookmarks' do
