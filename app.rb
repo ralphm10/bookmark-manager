@@ -3,14 +3,9 @@ require './lib/bookmark'
 require './database_connection_setup'
 require 'sinatra/flash'
 
-
 class BookmarkManager < Sinatra::Base
   register Sinatra::Flash
   enable :sessions, :method_override
-
-  get '/' do
-    flash[:notice] = 'Welcome to your new bookmark manager!'
-  end
 
   get '/bookmarks' do
     @bookmarks = Bookmark.all
@@ -23,7 +18,11 @@ class BookmarkManager < Sinatra::Base
   end
 
   post '/bookmarks' do
-    Bookmark.create(url: params[:url], title: params[:title])
+    if (params[:url] =~ /\A#{URI::regexp(['http', 'https'])}\z/).nil?
+      flash[:notice] = 'Please enter correct url'
+    else
+      Bookmark.create(url: params[:url], title: params[:title])
+    end
     redirect '/bookmarks'
   end
 

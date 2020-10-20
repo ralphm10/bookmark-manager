@@ -7,4 +7,10 @@ feature 'creating bookmarks' do
     click_button('Submit')
     expect(page).to have_link('GitHub', href: 'http://github.com/')
   end
+  scenario 'the url must be valid' do
+    visit '/bookmarks/new'
+    fill_in('url', with: 'football')
+    click_button('Submit')
+    expect(page).to have_content 'Please enter correct url'
+  end
 end
