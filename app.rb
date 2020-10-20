@@ -3,7 +3,6 @@ require './lib/bookmark'
 require './database_connection_setup'
 
 class BookmarkManager < Sinatra::Base
-    
   enable :sessions, :method_override
 
   get '/' do
@@ -34,11 +33,11 @@ class BookmarkManager < Sinatra::Base
     @bookmark = Bookmark.find(id: params[:id])
     erb :'bookmarks/edit'
   end
-  
+
   patch '/bookmarks/:id' do
     Bookmark.update(id: params[:id], url: params[:url], title: params[:title])
     redirect('/bookmarks')
-  end 
-  
-  run! if app_file == $0
+  end
+
+  run! if app_file == $PROGRAM_NAME
 end
