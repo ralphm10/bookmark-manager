@@ -41,6 +41,6 @@ class Bookmark
   private
 
   def self.valid_url?(url)
-    url =~ /\A#{URI::regexp(['http', 'https'])}\z/
-  end 
+    url =~ /\A#{URI::regexp(%w[http https])}\z/
+  end
 end
