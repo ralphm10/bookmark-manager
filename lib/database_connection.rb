@@ -1,14 +1,13 @@
 class DatabaseConnection
-
   def self.setup(db)
     @connection = PG.connect(dbname: db)
-  end 
+  end
 
   def self.connection
     @connection
-  end 
+  end
 
   def self.query(query_string)
     @connection.query(query_string)
-  end 
-end 
+  end
+end

@@ -36,4 +36,8 @@ I would like to be able to delete a bookmark
 As a busy developer
 So that I know my bookmarks are up to date
 I would like to be able to amend the title or link of a bookmark
+
+As a busy developer
+So that I know why I added it
+I would like to be able to add a comment to a bookmark
 ```

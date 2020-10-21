@@ -1,4 +1,5 @@
 require 'bookmark'
+require 'comment'
 require 'database_helpers'
 
 describe Bookmark do
@@ -31,7 +32,7 @@ describe Bookmark do
     it 'does not add an invalid url' do
       Bookmark.create(url: 'some url', title: 'some title')
       expect(Bookmark.all).to be_empty
-    end 
+    end
   end
 
   describe '.delete' do
@@ -56,6 +57,14 @@ describe Bookmark do
       test_bookmark = Bookmark.create(url: 'https://www.nfl.com', title: 'NFL')
       result = Bookmark.find(id: test_bookmark.id)
       expect(result.title).to eq 'NFL'
+    end
+  end
+
+  describe '.comment' do
+    it 'returns all comments associated with a bookmark' do
+      test_bookmark = Bookmark.create(url: 'https://www.linkedin.com/', title: 'LinkedIn')
+      Comment.create(text: 'for networking', bookmark_id: test_bookmark.id)
+      expect(test_bookmark.comments(id: test_bookmark.id)).to include 'for networking'
     end
   end
 end
