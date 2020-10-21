@@ -60,12 +60,14 @@ describe Bookmark do
     end
   end
 
+  let(:fake_comments) { double(:comment) }
+
   describe '.comments' do
-    it 'returns all comments associated with a bookmark' do
+    it 'calls .where on Comment class' do
       test_bookmark = Bookmark.create(url: 'https://www.linkedin.com/', title: 'LinkedIn')
-      Comment.create(text: 'for networking', bookmark_id: test_bookmark.id)
-      Comment.create(text: 'for jobs', bookmark_id: test_bookmark.id)
-      expect(test_bookmark.comments.first['text']).to include 'for networking'
+      expect(fake_comments).to receive(:where).with(bookmark_id: test_bookmark.id)
+
+      test_bookmark.comments(fake_comments)
     end
   end
 end
