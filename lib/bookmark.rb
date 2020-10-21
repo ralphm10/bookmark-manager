@@ -30,8 +30,8 @@ class Bookmark
     Bookmark.new(id: result[0]['id'], url: result[0]['url'], title: result[0]['title'])
   end
 
-  def comments(id:)
-    DatabaseConnection.query("SELECT text FROM comments WHERE bookmark_id = '#{id}';").first['text']
+  def comments
+    DatabaseConnection.query("SELECT text FROM comments WHERE bookmark_id = '#{id}';")
   end
 
   attr_reader :id, :title, :url
@@ -42,9 +42,9 @@ class Bookmark
     @url = url
   end
 
-  private
+  private_class_method
 
   def self.valid_url?(url)
-    url =~ /\A#{URI::regexp(%w[http https])}\z/
+    url =~ /\A#{URI::DEFAULT_PARSER.make_regexp(%w[http https])}\z/
   end
 end

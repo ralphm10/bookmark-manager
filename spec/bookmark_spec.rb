@@ -60,11 +60,12 @@ describe Bookmark do
     end
   end
 
-  describe '.comment' do
+  describe '.comments' do
     it 'returns all comments associated with a bookmark' do
       test_bookmark = Bookmark.create(url: 'https://www.linkedin.com/', title: 'LinkedIn')
       Comment.create(text: 'for networking', bookmark_id: test_bookmark.id)
-      expect(test_bookmark.comments(id: test_bookmark.id)).to include 'for networking'
+      Comment.create(text: 'for jobs', bookmark_id: test_bookmark.id)
+      expect(test_bookmark.comments.first['text']).to include 'for networking'
     end
   end
 end
