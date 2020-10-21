@@ -14,8 +14,8 @@ describe DatabaseConnection do
 
   describe './query' do
     it 'makes an SQL query on a database' do
-      connection = DatabaseConnection.setup('bookmark_manager_test')
-      first_bookmark = Bookmark.create(url: 'https://www.hotels.com/', title: 'Hotels')
+      DatabaseConnection.setup('bookmark_manager_test')
+      Bookmark.create(url: 'https://www.hotels.com/', title: 'Hotels')
       query = DatabaseConnection.query("SELECT * FROM bookmarks WHERE title = 'Hotels'")
       expect(query.first['url']).to eq 'https://www.hotels.com/'
     end
