@@ -1,7 +1,7 @@
 require 'pg'
 require_relative 'database_connection'
 require_relative 'comment'
-require_relative 'tag'
+# require_relative 'tag'
 
 class Bookmark
   def self.all
