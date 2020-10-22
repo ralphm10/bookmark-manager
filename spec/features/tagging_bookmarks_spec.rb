@@ -9,6 +9,7 @@ feature 'adding and viewing tags' do
       expect(current_path).to eq "/bookmarks/#{test_bookmark.id}/tags/new"
 
       fill_in 'tag', with: 'sport'
+      click_button 'Submit'
       expect(first('.bookmark')).to have_content 'sport'
     end
   end
