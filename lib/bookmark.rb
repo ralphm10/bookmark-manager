@@ -1,6 +1,7 @@
 require 'pg'
 require_relative 'database_connection'
 require_relative 'comment'
+require_relative 'tag'
 
 class Bookmark
   def self.all
@@ -43,7 +44,9 @@ class Bookmark
     @url = url
   end
 
-  private_class_method
+  def tags(tag_class = Tag)
+    tag_class.where(bookmark_id: id)
+  end
 
   def self.valid_url?(url)
     url =~ /\A#{URI::DEFAULT_PARSER.make_regexp(%w[http https])}\z/
