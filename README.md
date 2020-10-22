@@ -41,7 +41,11 @@ As a busy developer
 So that I know why I added it
 I would like to be able to add a comment to a bookmark
 
-As a dubsy developer
+As a busy developer
 So that I can add my bookmarks to categories
 I would like to be able to tag a bookmark
+
+As a busy developer
+So that I can easy find bookmarks
+I would like to be able to filter bookmarks on their tags
 ```
