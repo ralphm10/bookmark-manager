@@ -40,4 +40,8 @@ I would like to be able to amend the title or link of a bookmark
 As a busy developer
 So that I know why I added it
 I would like to be able to add a comment to a bookmark
+
+As a dubsy developer
+So that I can add my bookmarks to categories
+I would like to be able to tag a bookmark
 ```
