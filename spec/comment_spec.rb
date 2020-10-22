@@ -29,7 +29,7 @@ describe Comment do
       expect(all_comments.length).to eq 2
       expect(first_comment.id).to eq persisted_data.first['id']
       expect(first_comment.text).to eq 'For jobhunting'
-      expect(first_comment.bookmark_id).to eq test_bookmark.id 
+      expect(first_comment.bookmark_id).to eq test_bookmark.id
     end
   end
 end

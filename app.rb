@@ -51,7 +51,7 @@ class BookmarkManager < Sinatra::Base
   get '/bookmarks/:id/tags' do
     @bookmark_id = params[:id]
     erb :'tags/new'
-  end 
+  end
 
   post '/bookmarks/:id/tags' do
     tag = Tage.create(content: params[:tag])
