@@ -8,10 +8,15 @@ class Tag
 
   def self.where(bookmark_id:)
     result = DatabaseConnection.query("SELECT id, content FROM bookmark_tags INNER JOIN tags ON tags.id = bookmark_tags.tag_id WHERE bookmark_tags.bookmark_id = '#{bookmark_id}';")
+    result.map do |tag|
+      Tag.new(id: tag['id'], content: tag['content'])
+    end 
+  end
 
-  attr_reader :content
+  attr_reader :id, :content
 
-  def initialize(content)
+  def initialize(id:, content:)
+    @id = id
     @content = content
   end 
 end 

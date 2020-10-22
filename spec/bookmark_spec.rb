@@ -3,6 +3,9 @@ require 'comment'
 require 'database_helpers'
 
 describe Bookmark do
+  let(:fake_comments) { double(:comment) }
+  let(:fake_tag) { double(:tag) }
+
   describe '.all' do
     it 'returns all bookmarks' do
       PG.connect(dbname: 'bookmark_manager_test')
@@ -60,14 +63,19 @@ describe Bookmark do
     end
   end
 
-  let(:fake_comments) { double(:comment) }
-
   describe '.comments' do
     it 'calls .where on Comment class' do
       test_bookmark = Bookmark.create(url: 'https://www.linkedin.com/', title: 'LinkedIn')
       expect(fake_comments).to receive(:where).with(bookmark_id: test_bookmark.id)
-
       test_bookmark.comments(fake_comments)
+    end
+  end
+
+  describe '.tags' do
+    it 'calls .where on the tag class' do
+      test_bookmark = Bookmark.create(url: 'https://www.nfl.com', title: 'NFL')
+      expect(fake_tag).to receive(:where).with(bookmark_id: test_bookmark.id)
+      test_bookmark.tags(fake_tag)
     end
   end
 end
