@@ -4,19 +4,20 @@
       <a href=<%= bookmark.url %> target="_blank">
         <%= bookmark.title %>
       </a>
+      <br><br>
         <form action="/bookmarks/<%= bookmark.id %>" method="post">
           <input type='hidden' name='_method' value='DELETE'/>
           <input type="submit" value="Delete" />
         </form>
-        <form action="/bookmarks/<%= bookmark.id %>/edit">
+        <form action="/bookmarks/<%= bookmark.id %>/edit" method="get">
           <input type="submit" value="Edit" />
         </form>
-        <form action="/bookmarks/<%= bookmark.id %>/comments/new">
+        <form action="/bookmarks/<%= bookmark.id %>/comments/new" method="get">
           <input type="submit" value="Add comment" />
         </form>
-        <form action="/bookmarks/<%= bookmark.id %>/tags/new">
+        <form action="/bookmarks/<%= bookmark.id %>/tags/new" method="get">
           <input type="submit" value="Add tag" />
-        <form>
+        </form>
         <div>
           <h2>Comments</h2>
           <ul>
