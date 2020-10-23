@@ -78,4 +78,24 @@ describe Bookmark do
       test_bookmark.tags(fake_tag)
     end
   end
+
+  describe '.where' do
+    it ' returns bookmarks with a specific tag' do
+      test_bookmark = Bookmark.create(url: 'https://www.nfl.com', title: 'NFL')
+      tag1 = Tag.create(content: 'sport')
+      tag2 = Tag.create(content: 'entertainment')
+      BookmarkTag.create(bookmark_id: test_bookmark.id, tag_id: tag1.id)
+      BookmarkTag.create(bookmark_id: test_bookmark.id, tag_id: tag2.id)
+
+      tagged_bookmarks = Bookmark.where(tag_id: tag1.id)
+      result = tagged_bookmarks.first
+
+      expect(tagged_bookmarks.length).to eq 1
+      expect(result).to be_a Bookmark
+      expect(result.id).to eq test_bookmark.id
+      expect(result.title).to eq test_bookmark.title
+      expect(result.url).to eq test_bookmark.url
+    end
+  end
 end
+
