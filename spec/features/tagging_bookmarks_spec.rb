@@ -13,4 +13,32 @@ feature 'adding and viewing tags' do
       expect(first('.bookmark')).to have_content 'sport'
     end
   end
+
+  feature 'a user can filter bookmarks by tag' do
+    scenario 'adding the same tag to multiple bookmarks then filtering by tag' do
+      Bookmark.create(url: 'http://www.nfl.com', title: 'NFL')
+      Bookmark.create(url: 'http://www.liverpoolfc.com', title: 'LFC')
+      Bookmark.create(url: 'http://www.google.com', title: 'Google')
+
+      visit('/bookmarks')
+
+      within page.find('.bookmark:nth-of-type(1)') do
+        click_button 'Add tag'
+      end
+      fill_in 'tag', with: 'sport'
+      click_button 'Submit'
+
+      within page.find('.bookmark:nth-of-type(2)') do
+        click_button 'Add tag'
+      end
+      fill_in 'tag', with: 'sport'
+      click_button 'Submit'
+
+      first('.bookmark').click_link 'sport'
+
+      expect(page).to have_link 'NFL', href: 'http://www.nfl.com'
+      expect(page).to have_link 'LFC',  href: 'http://www.liverpoolfc.com'
+      expect(page).not_to have_link 'Google', href: 'http://www.google.com'
+    end
+  end
 end
