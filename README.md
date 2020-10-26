@@ -1,6 +1,16 @@
-## Bookmark Manager
+# Bookmark Manager
 
-A simple website to save my bookmarks.
+A simple web app to save my bookmarks.
+
+This was completed as park of the Makers course and was a first full stack web application, providing experience of using the MVC model, relational databases, ORM, and RESTful routes.
+
+The user stores for the application are listed [here](#user-stories).
+
+## Getting started
+```
+> git clone https://github.com/ralphm10/bookmark-manager
+```
+Run database migrations below; 
 
 ### To setup database
 1. Connect to psql
@@ -14,7 +24,18 @@ A simple website to save my bookmarks.
 3. Connect to the database using the pqsl command \c bookmark_manager_test;
 4. Run the query we have saved in the file 01_create_bookmarks_table.sql
 
-### User Stories
+### To run locally
+```
+> rackup
+```
+Go to <code>localhost:9292</code>
+
+## Running tests
+```
+> rspec
+```
+
+### [User Stories](#user-stories)
 
 ```
 As a busy developer
