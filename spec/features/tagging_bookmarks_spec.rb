@@ -37,7 +37,7 @@ feature 'adding and viewing tags' do
       first('.bookmark').click_link 'sport'
 
       expect(page).to have_link 'NFL', href: 'http://www.nfl.com'
-      expect(page).to have_link 'LFC',  href: 'http://www.liverpoolfc.com'
+      expect(page).to have_link 'LFC', href: 'http://www.liverpoolfc.com'
       expect(page).not_to have_link 'Google', href: 'http://www.google.com'
     end
   end

@@ -3,6 +3,7 @@ require './lib/bookmark'
 require './lib/comment'
 require './lib/tag'
 require './lib/bookmark_tag'
+require './lib/user'
 require './database_connection_setup'
 require 'sinatra/flash'
 
@@ -11,8 +12,8 @@ class BookmarkManager < Sinatra::Base
   enable :sessions, :method_override
 
   get '/bookmarks' do
+    @user = User.find(id: session[:user_id])
     @bookmarks = Bookmark.all
-
     erb :'bookmarks/index'
   end
 
@@ -62,7 +63,7 @@ class BookmarkManager < Sinatra::Base
   end
 
   get '/tags/:id/bookmarks' do
-    @tag = Tag.find(id: params['id'])
+    @tag = Tag.find(id: params[:id])
     erb :'tags/index'
   end
 
@@ -70,8 +71,9 @@ class BookmarkManager < Sinatra::Base
     erb :'users/new'
   end
 
-  post '/users/new' do
-    User.create(email: params['email'], password: BCrypt::Password.create(params['password']))
+  post '/users' do
+    new_user = User.create(email: params['email'], password: params['password'])
+    session[:user_id] = new_user.id
     redirect '/bookmarks'
   end
 
