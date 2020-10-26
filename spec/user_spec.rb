@@ -27,5 +27,12 @@ describe User do
       expect(User.find(id: nil)).to eq nil
     end
   end
+  describe '.authenticate' do
+    it 'restuns user based on email and password, if it exists' do
+      test_user = User.create(email: 'ralph.mallett@example.com', password: 'passw0rd')
+      authenticated_user = User.authenticate('ralph.mallett@example.com', 'passw0rd')
+      expect(test_user.id).to eq authenticated_user.id
+    end
+  end
 end
 
