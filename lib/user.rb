@@ -1,3 +1,5 @@
+require 'bcrypt'
+
 class User
   def self.create(email:, password:)
     encrypted_password = BCrypt::Password.create(password)

@@ -77,5 +77,15 @@ class BookmarkManager < Sinatra::Base
     redirect '/bookmarks'
   end
 
+  get '/sessions/new' do
+    erb :'sessions/new'
+  end
+
+  post '/sessions' do
+    user = DatabaseConnection.query("SELECT id FROM users WHERE email = '#{params['email']}';").first
+    session[:user_id] = user['id']
+    redirect '/bookmarks'
+  end
+
   run! if app_file == $PROGRAM_NAME
 end
