@@ -2,7 +2,7 @@
 
 A simple web app to save my bookmarks.
 
-This was completed as part of the Makers course and was my first full stack web application, providing experience of using the MVC model, relational databases, ORM, and RESTful routes.
+This was completed as part of the Makers course and was my first full stack web application, providing experience of using the MVC model, CRUD, relational databases, ORM, and RESTful routes.
 
 The user stores for the application are listed [here](#user-stories).
 
