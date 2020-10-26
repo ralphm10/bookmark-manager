@@ -8,4 +8,14 @@ feature 'user sign in with incorrect credendtials' do
     click_button('Submit')
     expect(page).to have_content('Please check email or password')
   end
+
+  scenario 'error message displayed if incorrect password provided' do
+    User.create(email: 'ralph.mallett@example.com', password: 'password')
+    visit '/bookmarks'
+    click_link('Sign in')
+    fill_in('email', with: 'ralph.mallett@example.com')
+    fill_in('password', with: 'wrong_password')
+    click_button('Submit')
+    expect(page).to have_content('Please check email or password')
+  end
 end
