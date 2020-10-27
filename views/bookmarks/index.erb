@@ -1,4 +1,7 @@
-<a href="/users/new">Sign up</a> | <a href="/sessions/new">Sign in</a>
+<a href="/users/new">Sign up</a> | <a href="/sessions/new">Sign in</a> | 
+<form action="/sessions/destroy" method="post">
+  <input type="submit" value="Sign out" />
+</form>
 
 <% if @user %>
   <h1>Welcome, <%= @user.email%></h1>
