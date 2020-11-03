@@ -11,7 +11,7 @@ I made reference to this [repo](https://github.com/makersacademy/bookmark_manage
 ## Getting started
 ```
 > git clone https://github.com/ralphm10/bookmark-manager
-> bundle
+> bundle install
 ```
 Run database migrations below; 
 
