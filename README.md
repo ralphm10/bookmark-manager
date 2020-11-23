@@ -12,15 +12,8 @@ I made reference to this [repo](https://github.com/makersacademy/bookmark_manage
 ```
 > git clone https://github.com/ralphm10/bookmark-manager
 > bundle install
+> rake setup
 ```
-Run database migrations below; 
-
-### To setup databases
-1. Connect to `psql`
-2. Create the database using the psql command `CREATE DATABASE bookmark_manager`;
-3. Create the database using the psql command `CREATE DATABASE bookmark_manager_test;`
-3. Connect to the relavent database using the pqsl command `\c bookmark_manager;` or `\c bookmark_manager_test;`
-4. Run the queries saved in `db/migrations` in the given order
 
 ### To run locally
 ```
